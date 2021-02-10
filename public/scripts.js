@@ -7,7 +7,7 @@ messages = document.querySelector('.messages');
 const myPeer = new Peer(undefined, {
     path: '/peerjs',
     host: '/',
-    port: '443'
+    port: '443' // set to same as server when in localhost for chat to work
 });
 
 myVideo = document.createElement('video');
@@ -35,10 +35,9 @@ navigator.mediaDevices.getUserMedia({
 
     msgInput.addEventListener('keyup', (e) => {
         if (e.key === "Enter") {
-            let msg = e.target.value;
-            console.log(msg);
-            if (msg.length > 0) {
-                socket.emit('message', msg);
+            let message = e.target.value;
+            if (message.length > 0) {
+                socket.emit('message', message);
                 e.target.value = "";
             }
         }
@@ -101,6 +100,19 @@ const toggleVideo = () => {
     }
 };
 
+const toggleChat = () => {
+    left = document.querySelector('.main__left');
+    right = document.querySelector('.main__right');
+
+    if (right.style.display === "none") {
+        right.style.display = "flex";
+        left.style.flex = "0.8";
+    } else {
+        right.style.display = "none";
+        left.style.flex = "1";
+    }
+};
+
 const setUnmuteButton = () => {
     const html = `<i class="unmute fas fa-microphone-slash"></i><span>Mute</span>`;
     document.querySelector('.main__mute_button').innerHTML = html;
@@ -117,4 +129,10 @@ const setPlayButton = () => {
 const setStopButton = () => {
     const html = `<i class="fas fa-video"></i><span>Stop Video</span>`;
     document.querySelector('.main__video_button').innerHTML = html;
+};
+
+const leaveMeeting = () => {
+    if (confirm("Do you want to leave the meeting?") == true) {
+        window.close();
+    }
 };
