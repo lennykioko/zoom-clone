@@ -14,6 +14,7 @@
     <script defer src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
     <script defer src="/socket.io/socket.io.js"></script>
     <script src="https://kit.fontawesome.com/c939d0e917.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
     <script defer src="scripts.js"></script>
 </head>
 <body>
@@ -61,8 +62,18 @@
         </div>
 
         <div class="main__right">
+            <div class="meeting__url">
+                <input id="hidden-input" value="">
+
+                <!-- Trigger -->
+                <button class="link-btn" data-clipboard-target="#hidden-input">
+                    <i class="fas fa-link"></i>
+                    <span>Meeting URL</span>
+                </button>
+            </div>
+
             <div class="main__header">
-                <h4>Chat</h4>
+                <h3>Chat</h3>
             </div>
             <div class="main__chat_window">
                 <ul class="messages"></ul>

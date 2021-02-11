@@ -4,6 +4,14 @@ videoGrid = document.querySelector('#video-grid');
 msgInput = document.querySelector('#chat-message');
 messages = document.querySelector('.messages');
 
+new ClipboardJS('.link-btn', {
+    text: function() {
+        return document.querySelector('#hidden-input').value;
+    }
+});
+
+document.querySelector('#hidden-input').value = window.location.href;
+
 const myPeer = new Peer(undefined, {
     path: '/peerjs',
     host: '/',
@@ -132,7 +140,16 @@ const setStopButton = () => {
 };
 
 const leaveMeeting = () => {
-    if (confirm("Do you want to leave the meeting?") == true) {
+    if (window.confirm("Do you want to leave the meeting?") == true) {
         window.close();
     }
 };
+
+linkBtn = document.querySelector('.link-btn');
+
+linkBtn.addEventListener('click', (e) => {
+    linkBtn.querySelector('span').textContent = 'Copied!';
+    setTimeout(() => {
+        linkBtn.querySelector('span').textContent = 'Meeting URL';
+    }, 2000);
+});
