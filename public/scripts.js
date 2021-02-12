@@ -15,7 +15,7 @@ document.querySelector('#hidden-input').value = window.location.href;
 const myPeer = new Peer(undefined, {
     path: '/peerjs',
     host: '/',
-    port: '443' // set to same as server when in localhost for chat to work
+    port: '443' // set to same as server when in localhost for chat to work else set to 443
 });
 
 myVideo = document.createElement('video');
@@ -141,6 +141,7 @@ const setStopButton = () => {
 
 const leaveMeeting = () => {
     if (window.confirm("Do you want to leave the meeting?") == true) {
+        window.location.replace('https://zoom-meeting-clone.herokuapp.com/exit');
         window.close();
     }
 };

@@ -110,7 +110,16 @@ video {
 .messages {
   color: white;
   list-style: none;
-  margin-top: 3px;
+}
+
+.message {
+  margin-top: 5px;
+  padding: 10px;
+}
+
+.message b {
+  font-weight: bold;
+  font-style: italic;
 }
 
 .unmute,
@@ -154,4 +163,31 @@ video {
 .link-btn:focus {
   background-color: rgb(30, 144, 255);
   border: none;
+}
+
+.exit__body {
+  background-color: rgb(245, 241, 241);
+}
+
+.exit__main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+.exit__center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(235, 230, 230);
+  padding: 20px;
+  margin: 20px;
+  border-radius: 5px;
+}
+
+.exit__center i {
+  font-size: 32px;
+  color: orange;
 }

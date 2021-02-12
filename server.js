@@ -21,6 +21,10 @@ app.get('/', (req, res) => {
     res.redirect(`/${uuidV4()}`);
 });
 
+app.get('/exit', (req, res) => {
+    res.render('exit');
+});
+
 app.get('/:room', (req, res) => {
     res.status(200).render('room', { roomId: req.params.room });
 });
